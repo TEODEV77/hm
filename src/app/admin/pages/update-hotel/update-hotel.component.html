@@ -1,0 +1,62 @@
+<app-header></app-header>
+<hr>
+<button class="outline" style="width: 100%;" (click)="navigateHotels()" >Return to hotels</button>
+<hr>
+<article>
+  <h2 style="text-align: center;">Update hotel</h2>
+  <form [formGroup]="updateHotelForm" (ngSubmit)="updateHotel()" >
+    <div class="grid">
+      <div>
+        <label for="name">
+          Name:
+          <input type="text" formControlName="name" name="name" id="name" placeholder="Enter hotel name" required />
+        </label>
+        <label for="email">
+          Email:
+          <input type="email" formControlName="email" name="email" id="email" required />
+        </label>
+        <label for="city">
+          City:
+          <input type="text" formControlName="city" name="city" id="city" required />
+        </label>
+      </div>
+      <div>
+        <label for="stars">
+          Stars:
+          <input type="number" formControlName="stars" name="stars" id="stars" required />
+          @if(updateHotelForm.get('stars')?.invalid){
+            <small style="color: rgb(24, 200, 106);">Stars must not be greater than 7</small>
+          }
+        </label>
+        <label for="address">
+          Address:
+          <input type="text" formControlName="address" name="address" id="address" required />
+        </label>
+        <label for="description">
+          Description:
+          <input type="text" formControlName="description" name="description" id="description" required />
+        </label>
+
+      </div>
+    </div>
+    <div class="grid">
+      <fieldset>
+        <legend>Hotel Status:</legend>
+        <div class="grid">
+          <label>
+            <input type="radio" formControlName="status" value="available" />
+            Available
+          </label>
+          <label>
+            <input type="radio" formControlName="status" value="unavailable" />
+            Unavailable
+          </label>
+        </div>
+      </fieldset>
+      <label for="commission">
+        Commission:
+        <input type="number" formControlName="commission" name="commission" id="commission" required />
+      </label>
+    </div>
+    <button [disabled]="updateHotelForm.invalid" class="outline" type="submit"> Update hotel</button>
+  </form>

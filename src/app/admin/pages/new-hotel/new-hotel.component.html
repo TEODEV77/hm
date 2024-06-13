@@ -1,0 +1,52 @@
+<div class="container">
+  <app-header></app-header>
+  <hr>
+  <button style="width: 100%;" class="outline" (click)="returnHotelList()" > Return Hotel List</button>
+  <hr>
+  <article>
+    <h2 style="text-align: center;">Add hotel</h2>
+    <form [formGroup]="hotelForm" (ngSubmit)="createHotel()" >
+      <div class="grid">
+        <div>
+          <label for="name">
+            Name:
+            <input type="text" formControlName="name" id="name" placeholder="Enter hotel name" required />
+          </label>
+          <label for="email">
+            Email:
+            <input type="email" formControlName="email"  id="email" required />
+          </label>
+          <label for="city">
+            City:
+            <input type="text" formControlName="city" id="city" required />
+          </label>
+        </div>
+        <div>
+          <label for="stars">
+            Stars:
+            <input type="number" formControlName="stars" name="stars" id="stars" required />
+            @if(hotelForm.get('stars')?.invalid){
+              <small style="color: rgb(24, 200, 106);">Stars must not be greater than 7</small>
+            }
+          </label>
+          <label for="address">
+            Address:
+            <input type="text" formControlName="address"  id="address" required />
+          </label>
+          <label for="description">
+            Description:
+            <input type="text" formControlName="description"  id="description" required />
+          </label>
+
+        </div>
+      </div>
+      <label for="commission">
+        Commission:
+        <input type="number" formControlName="commission" id="commission" required />
+
+      </label>
+
+      <button [disabled]="hotelForm.invalid" class="outline" type="submit"> Create hotel</button>
+    </form>
+  </article>
+</div>

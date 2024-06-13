@@ -1,0 +1,57 @@
+<div class="container">
+  @if(currentUser()==null){
+    <hr>
+    <div class="grid">
+      <button style="width: 100%;" class="outline" (click)="navigateSignIn()" >Sign in</button>
+      <button style="width: 100%;" class="outline" (click)="navigateSignUp()" >Sign up</button>
+    </div>
+  <hr>
+  }
+  <article>
+    <header style="text-align: center;"><strong>Make your booking</strong></header>
+    <form [formGroup]="bookingForm" (ngSubmit)="getByStartDateAndEndDate()" >
+      <div class="grid">
+        <label for="start_date">
+          Start date:
+          <input type="datetime-local" formControlName="start_date" aria-label="Datetime local" id="start_date" required />
+        </label>
+        <label for="end_date">
+          End date:
+          <input type="datetime-local" formControlName="end_date" aria-label="Datetime local" id="end_date" required />
+        </label>
+      </div>
+      <hr>
+      <input class="outline" type="submit" value="Search for hotels">
+    </form>
+  </article>
+  <hr>
+  <article *ngFor="let accommodation of accommodations" >
+    <header style="color:#40D485; text-align: center;" ><b>{{ accommodation.hotel.name }}</b> </header>
+    <div class="grid">
+      <article>
+        <header style="color:#64cdc8; text-align: center;"> <b>Hotel Details</b></header>
+        <hr>
+        <p><strong>Description:</strong></p><p>{{accommodation.hotel.description}}</p>
+        <hr>
+        <p><strong>City:</strong></p><p>{{accommodation.hotel.city}}</p>
+        <hr>
+        <p><strong>Stars:</strong></p><p>{{accommodation.hotel.stars}}</p>
+        <hr>
+        <p><strong>Address:</strong></p><p>{{accommodation.hotel.address}}</p>
+      </article>
+      <article>
+        <header style="color:#64cdc8; text-align: center;"> <b>Room Details</b></header>
+        <hr>
+        <p><strong>Room:</strong></p><p>{{accommodation.room.name}}</p>
+        <hr>
+        <p><strong>Floor:</strong></p><p>{{accommodation.room.floor}}</p>
+        <hr>
+        <p><strong>Type:</strong></p><p>{{accommodation.room.type}}</p>
+        <hr>
+        <p><strong>Cost:</strong></p><p>{{accommodation.room.base_cost}}</p>
+      </article>
+    </div>
+    <button class="outline" style="width: 100%;" (click)="book(accommodation)" >I want to book</button>
+  </article>
+
+</div>

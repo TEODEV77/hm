@@ -1,0 +1,33 @@
+<div class="container">
+  <app-header></app-header>
+  <hr>
+  <button class="outline" style="width: 100%;" (click)="navigateRooms()" >Return to rooms</button>
+  <hr>
+  <article>
+    <h2 style="text-align: center;" >Add room</h2>
+    <form [formGroup]="roomForm" (ngSubmit)="createRoom()">
+      <div class="grid">
+        <label for="name">
+          Name:
+          <input type="number" formControlName="name" id="name" placeholder="Enter room name" required />
+        </label>
+        <label for="floor">
+          Floor:
+          <input type="number" formControlName="floor" id="floor" required />
+        </label>
+      </div>
+      <div class="grid">
+        <label for="type">
+          Type:
+          <select formControlName="type" id="type" required>
+            <option value="single">Single</option>
+            <option value="standard">Standard</option>
+            <option value="double">Double</option>
+            <option value="suite">Suite</option>
+          </select>
+        </label>
+      </div>
+    <button [disabled]="roomForm.invalid" class="outline" type="submit">Add room</button>
+    </form>
+  </article>
+</div>

@@ -1,0 +1,93 @@
+<div class="container">
+  <article>
+    <h2 style="text-align: center;">Reservation</h2>
+    <form [formGroup]="reservationForm" (ngSubmit)="submit()">
+      <div class="grid">
+        <label for="start_date">
+          Start date:
+          <input readonly type="datetime-local" formControlName="start_date" aria-label="Datetime local" id="start_date" required />
+        </label>
+        <label for="end_date">
+          End date:
+          <input readonly type="datetime-local" formControlName="end_date" aria-label="Datetime local" id="end_date" required />
+        </label>
+      </div>
+      <hr>
+      <h2 style="text-align: center;">Emergency Contact</h2>
+      <div class="grid">
+        <div>
+          <label for="full_name">First Name:</label>
+          <input type="text" id="full_name" formControlName="full_name" placeholder="Full name">
+        </div>
+        <div>
+          <label for="phone">Phone:</label>
+          <input type="number" id="phone" formControlName="phone" placeholder="Phone">
+        </div>
+      </div>
+      <hr>
+      <div formArrayName="guests">
+        <h2 style="text-align: center;">Guests</h2>
+        <div *ngFor="let guest of guests.controls; let i = index" [formGroupName]="i">
+          <hr>
+          <div class="grid">
+            <div>
+              <label for="first_name_{{i}}">First Name:</label>
+              <input type="text" id="first_name_{{i}}" formControlName="first_name" placeholder="First Name">
+            </div>
+            <div>
+              <label for="last_name_{{i}}">Last Name:</label>
+              <input type="text" id="last_name_{{i}}" formControlName="last_name" placeholder="Last Name">
+            </div>
+            <div>
+              <label for="birth_date_{{i}}">Birth Date:</label>
+              <input type="date" id="birth_date_{{i}}" formControlName="birth_date" placeholder="Birth Date">
+            </div>
+          </div>
+          <div class="grid">
+            <div>
+              <label for="gender_{{i}}">
+                Gender:
+                <select formControlName="gender" id="gender_{{i}}" required>
+                  <option value="Male">Male</option>
+                  <option value="Female">Female</option>
+                </select>
+              </label>
+            </div>
+            <div>
+              <div>
+                <label for="document_type_{{i}}">
+                  Type of identification document:
+                  <select formControlName="document_type" id="document_type_{{i}}" required>
+                    <option value="National ID card">National ID card</option>
+                    <option value="Foreigner ID card">Foreigner ID card</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+            <div>
+              <label for="document_number_{{i}}">Document Number:</label>
+              <input type="number" id="document_number_{{i}}" formControlName="document_number" placeholder="Document Number">
+            </div>
+          </div>
+          <div class="grid">
+            <div>
+              <label for="email_{{i}}">Email:</label>
+              <input type="email" id="email_{{i}}" formControlName="email" placeholder="Email">
+            </div>
+            <div>
+              <label for="phone_{{i}}">Phone:</label>
+              <input type="number" id="phone_{{i}}" formControlName="phone" placeholder="Phone">
+            </div>
+          </div>
+          <hr>
+          <button style="width: 100%;" type="button" (click)="removeGuest(i)">Remove Guest</button>
+        </div>
+        <hr>
+      </div>
+      <button style="width: 100%;" type="button" (click)="addGuestForm()">Add Guest</button>
+      <hr>
+
+      <button [disabled]="reservationForm.invalid"  type="submit"> Make a booking</button>
+    </form>
+  </article>
+</div>
