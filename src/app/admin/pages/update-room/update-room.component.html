@@ -1,0 +1,54 @@
+<div class="container">
+  <app-header></app-header>
+  <hr>
+  <button class="outline" style="width: 100%;" (click)="navigateRooms()" >Return to rooms</button>
+  <hr>
+  <article>
+    <h2 style="text-align: center;" >Update room</h2>
+    <form [formGroup]="updateRoomForm" (ngSubmit)="updateRoom()">
+      <div class="grid">
+        <label for="name">
+          Name:
+          <input type="text" formControlName="name" id="name" placeholder="Enter room name" />
+        </label>
+        <label for="floor">
+          Floor:
+          <input type="number" formControlName="floor" id="floor" />
+        </label>
+        <label for="type">
+          Type:
+          <select formControlName="type" id="type" >
+            <option value="single">Single</option>
+            <option value="standard">Standard</option>
+            <option value="double">Double</option>
+            <option value="suite">Suite</option>
+          </select>
+        </label>
+      </div>
+      <div class="grid">
+        <label for="base_cost">
+          Base cost:
+          <input readonly type="number" formControlName="base_cost" id="base_cost" />
+        </label>
+        <label for="taxes">
+          Taxes:
+          <input type="number" formControlName="taxes" id="taxes" />
+        </label>
+      </div>
+      <fieldset>
+        <legend>Hotel Status:</legend>
+        <div class="grid">
+          <label>
+            <input type="radio" formControlName="status" value="available" />
+            Available
+          </label>
+          <label>
+            <input type="radio" formControlName="status" value="unavailable" />
+            Unavailable
+          </label>
+        </div>
+      </fieldset>
+    <button class="outline" type="submit">Update room</button>
+    </form>
+  </article>
+</div>

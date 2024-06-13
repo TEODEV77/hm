@@ -1,0 +1,35 @@
+<app-header></app-header>
+<hr>
+<button style="width: 100%" (click)="navigateCreateHotel()" class="outline"> Add hotel</button>
+<hr>
+<h2>Your hotels</h2>
+<table>
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Status</th>
+      <th scope="col">Bookings</th>
+      <th scope="col">Rooms</th>
+      <th scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let hotel of hotels">
+      <th>{{hotel.name}}</th>
+      @if(hotel.status === 'available'){
+        <td style="color:#40D485;"><strong>{{hotel.status}}</strong></td>
+      }
+      @if(hotel.status === 'unavailable'){
+          <td style="color:#64cdc8;"><strong>{{hotel.status}}</strong></td>
+        }
+      <td><input (click)="bookingsByHotel(hotel._id)" class="outline" type="button" value="View"></td>
+      <td><input (click)="roomsByHotel(hotel._id)" class="outline" type="button" value="View"></td>
+      <td>
+        <div class="grid">
+          <input (click)="update(hotel)" class="outline" type="button" value="Edit">
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+

@@ -1,0 +1,34 @@
+<div class="container">
+  <app-header></app-header>
+  <hr>
+  <article>
+    <h2 style="text-align: center;">Add Accommodation</h2>
+    <form [formGroup]="accommodationForm" (ngSubmit)="createAccommodation()" >
+      <div class="grid">
+        <label for="start_date">
+          Start date:
+          <input type="datetime-local" formControlName="start_date" aria-label="Datetime local" id="start_date" required />
+        </label>
+        <label for="end_date">
+          End date:
+          <input type="datetime-local" formControlName="end_date" aria-label="Datetime local" id="end_date" required />
+        </label>
+      </div>
+      <div class="grid">
+        <label for="type">
+          Hotel:
+          <select formControlName="hotels" id="type" required>
+            <option *ngFor="let hotel of hotels" [value]="hotel._id"> {{hotel.name}}</option>
+          </select>
+        </label>
+        <label for="type">
+          Room:
+          <select formControlName="rooms" id="type" required>
+            <option *ngFor="let room of rooms" [value]="room._id"> {{room.name}}</option>
+          </select>
+        </label>
+      </div>
+      <input [disabled]="accommodationForm.invalid" class="outline" type="submit" value="Add Accommodation">
+    </form>
+  </article>
+</div>

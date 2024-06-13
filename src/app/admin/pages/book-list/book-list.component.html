@@ -1,0 +1,14 @@
+<app-header></app-header>
+<hr>
+<div class="grid">
+  <h2>Reservations: <span> {{reservations.length}}</span></h2>
+  <h2>Commission Earnings: <span> $ {{total}}</span></h2>
+</div>
+<hr>
+<article *ngFor="let item of reservations">
+<app-hotel-card [hotel]="item.hotel"></app-hotel-card>
+<hr>
+<app-room-card [room]="item.room" ></app-room-card>
+<hr>
+<app-book-card [book]="item"></app-book-card>
+</article>

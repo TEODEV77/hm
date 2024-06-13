@@ -1,0 +1,13 @@
+services:
+  hmapp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: hm
+    container_name: hmapp
+    restart: always
+    ports:
+      - 4200:80
+
+
+

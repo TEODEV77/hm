@@ -1,0 +1,45 @@
+<h3 style="text-align: center;">Booking Details</h3>
+<hr>
+<div class="grid">
+  <p>Check In:</p>
+  <p>{{book.check_in | date:'yyyy-MM-dd HH:mm:ss' }}</p>
+</div>
+<hr>
+<div class="grid">
+  <p>Check Out:</p>
+  <p>{{book.check_out | date:'yyyy-MM-dd HH:mm:ss' }}</p>
+</div>
+<hr>
+<div class="grid">
+  <p>Guests:</p>
+  <p>{{book.number_of_people}}</p>
+</div>
+<hr>
+<div class="grid">
+  <p>Total:</p>
+  <p>{{book.total}} USD </p>
+</div>
+<hr>
+<h3 style="text-align: center;">Guests</h3>
+<div *ngFor="let guest of book.guests">
+  <div class="grid">
+    <p>First Name:</p>
+    <p>{{guest.first_name}} </p>
+    <p>Phone:</p>
+    <p>{{guest.phone}} </p>
+    <p>Document Type:</p>
+    <p>{{guest.document_type}} </p>
+  </div>
+  <hr>
+</div>
+<h3 style="text-align: center;">Emergency Contact</h3>
+<hr>
+<div class="grid">
+  <p>Fullname:</p>
+  <p>{{book.emergency_contact.full_name}} </p>
+</div>
+<hr>
+<div class="grid">
+  <p>Phone:</p>
+  <p>{{book.emergency_contact.phone}} </p>
+</div>

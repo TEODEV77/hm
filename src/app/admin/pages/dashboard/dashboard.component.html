@@ -1,0 +1,18 @@
+<div class="grid">
+  @if (currentUser()?.role != 'CLIENT') {
+    <article>
+      <header style="text-align: center;">Hotels</header>
+      <button style="width: 100%;" class="outline" (click)="navigateHotelList()">See hotels list</button>
+    </article>
+    <article>
+      <header style="text-align: center;">Accommodations</header>
+      <button style="width: 100%;" class="outline" (click)="createAccommodation()">Create</button>
+    </article>
+  } @else{
+      <article>
+        <header style="text-align: center;">Reservations</header>
+        <button style="width: 100%;" class="outline" (click)="navigateToBook()">See bookings list</button>
+      </article>
+  }
+
+</div>

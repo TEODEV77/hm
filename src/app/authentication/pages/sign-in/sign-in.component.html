@@ -1,0 +1,24 @@
+<div class="container">
+  <article style="margin-top: 12rem;">
+    <h2 style="text-align: center;">Sign in</h2>
+    <form [formGroup]="signInForm" (ngSubmit)="signIn()" >
+      <label for="email">
+        E-mail:
+        <input type="email" formControlName="email" name="email" id="email" required [attr.aria-invalid]="signInForm.get('email')?.invalid" aria-describedby="valid-helper"/>
+        @if(signInForm.get('email')?.valid){
+          <small>Looks good!</small>
+        }
+        @if(signInForm.get('email')?.invalid){
+          <small>Please enter a valid email address.</small>
+        }
+      </label>
+      <label for="password">
+        Password:
+        <input type="password" formControlName="password" name="password" id="password" required />
+      </label>
+      <button [disabled]="signInForm.invalid" type="submit">Sign in</button>
+      <button style="width: 100%;" (click)="navigateSignUp()"  >Sign up</button>
+
+    </form>
+  </article>
+</div>
